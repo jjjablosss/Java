@@ -44,13 +44,11 @@ public class CzyPierwsza {
 
     private static boolean IsFirst(int x) {
         int kolejneliczby, dodatkowa = 0;
-        double maximum;
-        maximum = Math.sqrt(x);
-        for (kolejneliczby = 2; kolejneliczby <= maximum; kolejneliczby++) {
+
+        for (kolejneliczby = 2; kolejneliczby <= ((int)Math.sqrt(x)); kolejneliczby++) {
             if (x % kolejneliczby == 0) {
-               // System.out.print("Przed" + dodatkowa);
                 dodatkowa++;
-                //System.out.print("Po" + dodatkowa);
+                System.out.print("Zmienia sie");
                 if(dodatkowa >=1) {
                     break;
                 }
