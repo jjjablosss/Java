@@ -33,9 +33,9 @@ public class CzyPierwsza {
             Scanner dlaczegotak = new Scanner(System.in);
             if (dlaczegotak.hasNextInt()) {
                 Wejsciowa = dlaczegotak.nextInt();
-                if (Wejsciowa > 2) {
+                if (Wejsciowa > 1) {
                     return Wejsciowa;
-                } else System.out.println("Podana liczba musi byc dodatnia oraz wieksza od 2 : ");
+                } else System.out.println("Podana liczba musi byc dodatnia oraz wieksza od 1 : ");
             } else System.out.println("Podaj poprawna liczbe do sprawdzenia : ");
         }
 
@@ -48,7 +48,7 @@ public class CzyPierwsza {
         for (kolejneliczby = 2; kolejneliczby <= ((int)Math.sqrt(x)); kolejneliczby++) {
             if (x % kolejneliczby == 0) {
                 dodatkowa++;
-                System.out.print("Zmienia sie");
+                //System.out.print("Zmienia sie");
                 if(dodatkowa >=1) {
                     break;
                 }
