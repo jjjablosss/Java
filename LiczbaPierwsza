@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class CzyPierwsza {
+    public static void main(String[] args) {
+        SprawdzLiczbe();
+
+    }
+
+    public static void SprawdzLiczbe(){
+        boolean warunek = false;
+        int liczba, zmienna;
+        System.out.println("Sprawdz czy podana liczba jest liczbą pierwszą");
+        System.out.println();
+        liczba = OdczytajLiczbe();
+        //System.out.println("Wczytana liczba" + liczba);
+        if (IsFirst(liczba)) {
+            System.out.print("Podana liczba (" + liczba + ") jest liczba pierwsza");
+        } else {
+            System.out.print("Podana liczba nie jest liczba pierwsza");
+        }
+
+
+
+
+    }
+
+    public static int OdczytajLiczbe() {
+        boolean warunek = false;
+        int Wejsciowa;
+
+        System.out.println("Podaj liczbe ktora ma zostac sprawdzona ! : ");
+        while (!warunek) {
+            Scanner dlaczegotak = new Scanner(System.in);
+            if (dlaczegotak.hasNextInt()) {
+                Wejsciowa = dlaczegotak.nextInt();
+                if (Wejsciowa > 2) {
+                    return Wejsciowa;
+                } else System.out.println("Podana liczba musi byc dodatnia oraz wieksza od 2 : ");
+            } else System.out.println("Podaj poprawna liczbe do sprawdzenia : ");
+        }
+
+        return 0;
+    }
+
+    private static boolean IsFirst(int x) {
+        int kolejneliczby = 1, dodatkowa = 0;
+        for (kolejneliczby = 1; kolejneliczby <= x; kolejneliczby++) {
+            if (x % kolejneliczby == 0) {
+                dodatkowa++;
+            }
+        }
+        if (dodatkowa==2) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+}
