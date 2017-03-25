@@ -52,18 +52,21 @@ public class coscos {
     }//Koniec klasy getHeight
 
     public static char getCharacter(){
-        char Znak;
+        char Znak, defaultCharacter;
         String StringZnak;
         System.out.print("Podaj pojedynczy znak (np.*)  : ");
         Scanner scanCharacter = new Scanner(System.in);
         if(scanCharacter.hasNext()) {
             StringZnak = scanCharacter.nextLine();
             Znak = StringZnak.charAt(0);
-
+           if(StringZnak.length() == 1)
             return Znak;
+            else
+                defaultCharacter = '*';
+                System.out.println("Podano nie poprawny znak, uzywanie znaku domyslnego : '" + defaultCharacter + "'");
         }//Koniec Petli if
         else{
-            System.out.print("Podaj poprawny pojedyczny znak np.'*' ");
+            System.out.print("Podaj poprawny pojedyczny znak np.'*' : ");
         }//Koniec Else
         return '*';
     }//Koniec klasy getCharacter;
