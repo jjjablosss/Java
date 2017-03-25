@@ -1,0 +1,120 @@
+import java.util.Scanner;
+
+public class XmassTreeMain {
+    public static void main(String[] args)
+    {
+        String Direction;
+        char Character;
+        int Height;
+        Height = getHeight();
+        Character = getCharacter();
+        Direction = getDirection();
+
+        switch(Direction)
+        {
+            case "UP" :
+                XmassTreeUp(Height, Character);
+                break;
+
+            case "DOWN" :
+                XmassTreeDown(Height, Character);
+                break;
+
+            case "RIGHT" :
+                XmassTreeRight(Height, Character);
+                break;
+
+            case "LEFT" :
+                XmassTreeLeft(Height, Character);
+                break;
+            default :
+                System.out.print("Podany kierunek jest niepoprawny.");
+        }
+
+    }//Koniec Main
+
+        public static int getHeight(){
+        int Wejsciowa;
+        System.out.print("Podaj Wysokosc choinki : ");
+        for(;;) {
+            Scanner HeightScanner = new Scanner(System.in);
+                if(HeightScanner.hasNextInt()){
+                  //  Wejsciowa.push(HeightScanner.nextInt());
+                    Wejsciowa = HeightScanner.nextInt();
+                    return Wejsciowa;
+                }//Koniec petli if
+            else{
+                   System.out.print("Podaj poprawna wartosc wysokosci choinki : ");
+                }
+            }//Koniec Petli For
+        }//Koniec klasy getHeight
+
+        public static char getCharacter(){
+            char Znak;
+            String StringZnak;
+              System.out.print("Podaj pojedynczy znak (np.*)  : ");
+                Scanner scanCharacter = new Scanner(System.in);
+                if(scanCharacter.hasNext()) {
+                    StringZnak = scanCharacter.nextLine();
+                    Znak = StringZnak.charAt(0);
+
+                return Znak;
+            }//Koniec Petli if
+            else{
+                System.out.print("Podaj poprawny pojedyczny znak np.'*' ");
+            }//Koniec Else
+            return '*';
+        }//Koniec klasy getCharacter;
+
+        public enum DirectionBase { //Definiowanie prawidlowych odpowiedzi do getDirection()
+        UP, DOWN, LEFT, RIGHT;
+    }
+
+        public static String getDirection(){
+            String kierunek;
+            String Tempname;
+            System.out.print("Podaj kierunek w którym ma być narysowana choinka (UP,DOWN,RIGHT,LEFT) : ");
+            for(;;) {
+                Scanner DirectionScanner = new Scanner(System.in);
+                kierunek = DirectionScanner.next();
+                kierunek = kierunek.toUpperCase();
+                for(DirectionBase dir : DirectionBase.values()){
+                    Tempname = dir.name();
+                if(Tempname.equals(kierunek)) {
+                    return kierunek;
+                }//Koniec petli if
+                }//Koniec Petli For
+                System.out.print("Podaj kierunek w którym ma być narysowana choinka (UP,DOWN,RIGHT,LEFT) : ");
+            }//Koniec petli for
+        }//Koniec klasy getDirection
+
+   public static void XmassTreeUp(int Height, char Character) {
+        for(int i= 0;i< Height; i++){
+
+
+        }//Koniec petli for
+    }//Koniec XmassTreeUp
+
+    public static void XmassTreeDown(int Height, char Character) {
+
+
+    }//Koniec XmassTreeDown
+
+    public static void XmassTreeRight(int Height, char Character) {
+
+
+    }//Koniec XmassTreeRight
+
+    public static void XmassTreeLeft(int Height, char Character) {
+
+
+    }//Koniec XmassTreeLeft
+
+    }//Koniec Głównej Klasy
+
+    public static void drawCharacter(char znak; int Height){
+    for (int i = 0; i< height; i++){
+        System.out.print(znak);
+            }//Koniec petli for;
+
+    }//Koniec funkcji drawCharacter
