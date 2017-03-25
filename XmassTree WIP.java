@@ -30,8 +30,6 @@ public class coscos {
             case "LEFT" :
                 XmassTreeLeft(Height, Character);
                 break;
-            default :
-                System.out.print("Podany kierunek jest niepoprawny.");
         }
 
     }//Koniec Main
@@ -69,7 +67,7 @@ public class coscos {
         return '*';
     }//Koniec klasy getCharacter;
 
-    public enum DirectionBase { //Definiowanie prawidlowych odpowiedzi do getDirection()
+    public enum DirectionDatabase { //Definiowanie prawidlowych odpowiedzi do getDirection()
         UP, DOWN, LEFT, RIGHT;
     }
 
@@ -81,20 +79,21 @@ public class coscos {
             Scanner DirectionScanner = new Scanner(System.in);
             kierunek = DirectionScanner.next();
             kierunek = kierunek.toUpperCase();
-            for(DirectionBase dir : DirectionBase.values()){
+            for(DirectionDatabase dir : DirectionDatabase.values()){
                 Tempname = dir.name();
                 if(Tempname.equals(kierunek)) {
                     return kierunek;
                 }//Koniec petli if
             }//Koniec Petli For
-            System.out.print("Podaj kierunek w którym ma być narysowana choinka (UP,DOWN,RIGHT,LEFT) : ");
+            return kierunek;
+           // System.out.print("Podaj kierunek w którym ma być narysowana choinka (UP,DOWN,RIGHT,LEFT) : ");
         }//Koniec petli for
     }//Koniec klasy getDirection
 
     public static void XmassTreeUp(int Height, char Character) {
         for(int i= 0;i< Height; i++){
-            drawCharacterUpDown(Height -i - 1, ' ');
-            drawCharacterUpDown(2 * i + 1, Character);
+            drawCharacter(true,Height -i - 1, ' ');
+            drawCharacter(true,2 * i + 1, Character);
 
             System.out.println();
 
@@ -103,52 +102,55 @@ public class coscos {
 
     public static void XmassTreeDown(int Height, char Character) {
         for(int i=0 ;i < Height ;i++) {
-            drawCharacterUpDown(1*i,' ');
-            drawCharacterUpDown(2* Height - 2*i - 1, Character);
+            drawCharacter(true,1*i,' ');
+            drawCharacter(true,2* Height - 2*i - 1, Character);
             System.out.println("");
         }//Koniec petli for
     }//Koniec XmassTreeDown
 
     public static void XmassTreeRight(int Height, char Character) {
         drawCharacterRUpLDown(true, Height, Character);
-        drawCharacterLeftRightMed(Height, Character);
+        drawCharacter(false, Height, Character);
         drawCharacterLUpRDown(true, Height, Character);
 
     }//Koniec XmassTreeRight
 
     public static void XmassTreeLeft(int Height, char Character) {
         drawCharacterLUpRDown(false, Height, Character);
-        drawCharacterLeftRightMed(Height, Character);
+        drawCharacter(false, Height, Character);
         drawCharacterRUpLDown(false, Height, Character);
 
     }//Koniec XmassTreeLeft
 
-    public static void drawCharacterUpDown(int Height, char Character){
-        for (int i = 0; i< Height; i++){
+    public static void drawCharacter(boolean ifside ,int Height, char Character){
+        for (int CharacterInt = 0; CharacterInt < Height; CharacterInt++){
             System.out.print(Character);
         }//Koniec petli for;
-
+        if(!ifside)
+            System.out.println("");
     }//Koniec funkcji drawCharacter
-    
+
    public static void drawCharacterLUpRDown(boolean side, int Height, char Character){
 
        for(int SymbolInt = 0; SymbolInt < Height - 1; SymbolInt++){
            for(int SpaceInt = 0;SpaceInt < Height - SymbolInt - 1; SpaceInt++){
-                if(!side){
-               System.out.print(" ");}
+                if(!side)
+               System.out.print(" ");
                 else
                 System.out.print(Character);
 
            }//Koneic petli for wew.
 
            for(int CharacterInt = 0; CharacterInt <= SymbolInt; CharacterInt++){
-               if(!side){
-               System.out.print(Character);}
+               if(!side)
+               System.out.print(Character);
                 else
                System.out.print(" ");
 
            }//Koniec petli for wew.
+
            System.out.println("");
+
        }//Koniec petli for zew.
    }//Koniec klasy drawCharacterLUpRDown
 
@@ -172,16 +174,6 @@ public class coscos {
             System.out.println("");
 
         }//Koniec petli for zew.
-
     }//Koniec klasy drawCharacterRUpLDown
-    
-    public static void drawCharacterLeftRightMed(int Height, char Character){
-        for(int CharacterInt = 0; CharacterInt < Height; CharacterInt++){
 
-            System.out.print(Character);
-
-        }//Koniec petli for
-       System.out.println("");
-
-    }//Koniec klasy drawCharacterLeftMed
 }//Koniec Głównej Klasy
