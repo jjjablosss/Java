@@ -1,6 +1,7 @@
 import org.apache.xmlbeans.xml.stream.Space;
 import sun.awt.Symbol;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class coscos {
@@ -92,8 +93,8 @@ public class coscos {
 
     public static void XmassTreeUp(int Height, char Character) {
         for(int i= 0;i< Height; i++){
-            drawCharacter(true,Height -i - 1, ' ');
-            drawCharacter(true,2 * i + 1, Character);
+            drawCharacter(true,Height -i - 1, ' ', false);
+            drawCharacter(true,2 * i + 1, Character, true);
 
             System.out.println();
 
@@ -102,33 +103,47 @@ public class coscos {
 
     public static void XmassTreeDown(int Height, char Character) {
         for(int i=0 ;i < Height ;i++) {
-            drawCharacter(true,1*i,' ');
-            drawCharacter(true,2* Height - 2*i - 1, Character);
+            drawCharacter(true,1*i,' ', false);
+            drawCharacter(true,2* Height - 2*i - 1, Character, false);
             System.out.println("");
         }//Koniec petli for
     }//Koniec XmassTreeDown
 
     public static void XmassTreeRight(int Height, char Character) {
         drawCharacterRUpLDown(true, Height, Character);
-        drawCharacter(false, Height, Character);
+        drawCharacter(false, Height, Character, false);
         drawCharacterLUpRDown(true, Height, Character);
 
     }//Koniec XmassTreeRight
 
     public static void XmassTreeLeft(int Height, char Character) {
         drawCharacterLUpRDown(false, Height, Character);
-        drawCharacter(false, Height, Character);
+        drawCharacter(false, Height, Character, false);
         drawCharacterRUpLDown(false, Height, Character);
 
     }//Koniec XmassTreeLeft
 
-    public static void drawCharacter(boolean ifside ,int Height, char Character){
+    public static void drawCharacter(boolean ifside ,int Height, char Character,boolean bubbles){
         for (int CharacterInt = 0; CharacterInt < Height; CharacterInt++){
+            if(bubbles){
+                if(RandomBubbles(1,10) % 4 == 0)
+                    System.out.print("o");
+                else
             System.out.print(Character);
-        }//Koniec petli for;
+            }//Koniec petli if zew.
+                else
+                System.out.print(Character);
+            }//Koniec petli for;
         if(!ifside)
             System.out.println("");
     }//Koniec funkcji drawCharacter
+
+    public static int RandomBubbles(int min, int max){
+
+        int range = (max - min) + 1;
+        return (int)(Math.random() * range) + min;
+
+    }//Koniec klasy RandomBubbles
 
    public static void drawCharacterLUpRDown(boolean side, int Height, char Character){
 
