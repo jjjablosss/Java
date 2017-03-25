@@ -110,16 +110,16 @@ public class coscos {
     }//Koniec XmassTreeDown
 
     public static void XmassTreeRight(int Height, char Character) {
-        drawCharacaterRightUp(Height, Character);
+        drawCharacterRUpLDown(true, Height, Character);
         drawCharacterLeftRightMed(Height, Character);
-        drawCharacterRightDown(Height, Character);
+        drawCharacterLUpRDown(true, Height, Character);
 
     }//Koniec XmassTreeRight
 
     public static void XmassTreeLeft(int Height, char Character) {
-        drawCharacterLeftUp(Height, Character);
+        drawCharacterLUpRDown(false, Height, Character);
         drawCharacterLeftRightMed(Height, Character);
-        drawCharacterLeftDown(Height, Character);
+        drawCharacterRUpLDown(false, Height, Character);
 
     }//Koniec XmassTreeLeft
 
@@ -129,84 +129,52 @@ public class coscos {
         }//Koniec petli for;
 
     }//Koniec funkcji drawCharacter
+    
+   public static void drawCharacterLUpRDown(boolean side, int Height, char Character){
 
-    public static void drawCharacaterRightUp(int Height, char Character){
-
-        for(int FreeSpaceInt  = Height - 1; FreeSpaceInt > 0; FreeSpaceInt--) {
-            for(int CharacterInt = Height - FreeSpaceInt; CharacterInt > 0; CharacterInt--){
-
+       for(int SymbolInt = 0; SymbolInt < Height - 1; SymbolInt++){
+           for(int SpaceInt = 0;SpaceInt < Height - SymbolInt - 1; SpaceInt++){
+                if(!side){
+               System.out.print(" ");}
+                else
                 System.out.print(Character);
 
-            }//Koniec petli for wew.
-            for(int SpaceInt = 0; SpaceInt < FreeSpaceInt; SpaceInt++) {
+           }//Koneic petli for wew.
 
-                System.out.print(" ");
+           for(int CharacterInt = 0; CharacterInt <= SymbolInt; CharacterInt++){
+               if(!side){
+               System.out.print(Character);}
+                else
+               System.out.print(" ");
 
-            }//Koniec petli for wew.
+           }//Koniec petli for wew.
+           System.out.println("");
+       }//Koniec petli for zew.
+   }//Koniec klasy drawCharacterLUpRDown
 
-            System.out.println("");
+    public static void drawCharacterRUpLDown(boolean side, int Height, char Character){
 
-        }//Koniec Petli for zew.
-    }//Koniec klasy drawCharacterRightUp
-
-    public static void drawCharacterLeftUp(int Height, char Character)
-    {
-        for(int SymbolInt = 0; SymbolInt < Height - 1; SymbolInt++){
-            for(int SpaceInt = 0;SpaceInt < Height - SymbolInt - 1; SpaceInt++){
-
-                System.out.print(" ");
-
-            }//Koneic petli for wew.
-
-            for(int CharacterInt = 0; CharacterInt <= SymbolInt; CharacterInt++){
-
-                System.out.print(Character);
-
-            }//Koniec petli for wew.
-            System.out.println("");
-        }//Koniec petli for zew.
-    }//Koniec klasy drawCharacterLeftUp
-
-   // public static void drawCharacterUp(boolean side, int Height, char Character)
-
-
-    public static void drawCharacterRightDown(int Height, char Character){
-        for(int FreeSpace = 0; FreeSpace < Height - 1; FreeSpace++){
-            for(int CharacterInt = 0; CharacterInt < Height -FreeSpace -1; CharacterInt ++){
-
-                System.out.print(Character);
-
-            }//Koniec petli for wew.
-            for(int SpaceInt = 0; SpaceInt < FreeSpace;SpaceInt++) {
-
-                System.out.print(" ");
-
-            }//Koniec prtli wew.
-            System.out.println("");
-
-        }//Koniec petli for zew.
-    }//Koniec klasy drawCharacterRightMed
-
-    public static void drawCharacterLeftDown(int Height, char Character)
-    {
         for(int SymbolInt = Height -1; SymbolInt  > 0; SymbolInt--){
             for(int LineInt = Height - SymbolInt; LineInt > 0; LineInt--){
-
+                if(!side)
                 System.out.print(" ");
-
+                else
+                System.out.print(Character);
             }//Koniec petli for wew.
 
             for(int SpaceInt = 0; SpaceInt < SymbolInt; SpaceInt++) {
-
+                if(!side)
                 System.out.print(Character);
-
+                else
+                System.out.print(" ");
             }//Koniec Petli for wew.
 
             System.out.println("");
 
         }//Koniec petli for zew.
-    }//Koniec klasy drawCharacterLeftDown
 
+    }//Koniec klasy drawCharacterRUpLDown
+    
     public static void drawCharacterLeftRightMed(int Height, char Character){
         for(int CharacterInt = 0; CharacterInt < Height; CharacterInt++){
 
