@@ -1,3 +1,5 @@
+import sun.awt.Symbol;
+
 import java.util.Scanner;
 
 public class XmassTreeMain {
@@ -90,7 +92,10 @@ public class XmassTreeMain {
 
    public static void XmassTreeUp(int Height, char Character) {
         for(int i= 0;i< Height; i++){
+            drawCharacterUpDown(Height -i - 1, ' ');
+            drawCharacterUpDown(2 * i + 1, Character);
 
+            System.out.println();
 
         }//Koniec petli for
     }//Koniec XmassTreeUp
@@ -106,15 +111,64 @@ public class XmassTreeMain {
     }//Koniec XmassTreeRight
 
     public static void XmassTreeLeft(int Height, char Character) {
-
+        drawCharacterLeftUp(Height, Character);
+        drawCharacterLeftMed(Height, Character);
+        drawCharacterLeftDown(Height,  Character);
 
     }//Koniec XmassTreeLeft
 
-    }//Koniec Głównej Klasy
-
-    public static void drawCharacter(char znak; int Height){
-    for (int i = 0; i< height; i++){
-        System.out.print(znak);
+    public static void drawCharacterUpDown(int Height, char Character){
+    for (int i = 0; i< Height; i++){
+        System.out.print(Character);
             }//Koniec petli for;
 
     }//Koniec funkcji drawCharacter
+
+    public static void drawCharacterLeftDown(int Height, char Character)
+    {
+        for(int SymbolInt = Height -1; SymbolInt  > 0; SymbolInt--){
+            for(int LineInt = Height - SymbolInt; LineInt > 0; LineInt--){
+
+                System.out.print(" ");
+
+            }//Koniec petli for wew.
+
+            for(int SpaceInt = 0; SpaceInt < SymbolInt; SpaceInt++) {
+
+                System.out.print(Character);
+
+            }//Koniec Petli for wew.
+
+            System.out.println("");
+
+        }//Koniec petli for zew.
+    }//Koniec klasy drawCharacterLeftDown
+
+    public static void drawCharacterLeftUp(int Height, char Character)
+    {
+        for(int SymbolInt = 0; SymbolInt < Height - 1; SymbolInt++){
+            for(int SpaceInt = 0;SpaceInt < Height - SymbolInt - 1; SpaceInt++){
+
+                System.out.print(" ");
+
+            }//Koneic petli for wew.
+
+            for(int CharacterInt = 0; CharacterInt <= SymbolInt; CharacterInt++){
+
+                System.out.print(Character);
+
+            }//Koniec petli for wew.
+            System.out.println("");
+        }//Koniec petli for zew.
+    }//Koniec klasy drawCharacterLeftUp
+
+    public static void drawCharacterLeftMed(int Height, char Character){
+        for(int CharacterInt = 0; CharacterInt < Height; CharacterInt++){
+
+            System.out.print(Character);
+
+        }//Koniec petli for wew.
+        System.out.print("");
+
+    }//Koniec klasy drawCharacterLeftMed
+}//Koniec Głównej Klasy
