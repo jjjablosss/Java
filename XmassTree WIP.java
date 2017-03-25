@@ -43,19 +43,14 @@ public class XmassTreeMain {
         System.out.print("Podaj Wysokosc choinki : ");
         for(;;) {
             Scanner HeightScanner = new Scanner(System.in);
-            if(HeightScanner.hasNextInt()){
-                //  Wejsciowa.push(HeightScanner.nextInt());
+            if(HeightScanner.hasNextInt())
                 Wejsciowa = HeightScanner.nextInt();
-            }//Koniec petli if
-            if (Wejsciowa > 0){
+            //Koniec petli if
+           else if (Wejsciowa > 0)
                 return Wejsciowa;
-            }//Koniec petli if wew.
-            else if(Wejsciowa <= 0){
-                System.out.print("Podaj liczbe dodatnia wieksza od 0: ");
-            }//Koniec If wew.
-            else{
-                System.out.print("Podaj poprawna wartosc wysokosci choinki : ");
-            }//Koniec Else Default
+            //Koniec petli if wew.
+            else if(Wejsciowa <= 0)
+                System.out.print("Podana wartosc musi byc liczba oraz wieksza od 0: ");
         }//Koniec Petli For
     }//Koniec klasy getHeight
 
@@ -68,9 +63,8 @@ public class XmassTreeMain {
             StringZnak = scanCharacter.nextLine();
             Znak = StringZnak.charAt(0);
         }//Koniec Petli if
-        if(StringZnak.length() == 1){
+        if(StringZnak.length() == 1)
             return Znak;
-        }
         else
             System.out.println("Podano znak dluzszy niz jeden znak. Uzycie domyslnego znaku.(*) ");
             return '*';
@@ -94,24 +88,26 @@ public class XmassTreeMain {
     }//Koniec klasy getDirection
 
     public static void XmassTreeUp(int Height, char Character) {
-        for(int i= 0;i< Height; i++){
-            drawCharacter(true,Height -i - 1, ' ', false);
-            drawCharacter(true,2 * i + 1, Character, true);
+
+        for(int DrawInt = 0;DrawInt< Height; DrawInt++){
+            drawCharacter(true,Height -DrawInt - 1, ' ', false);
+            drawCharacter(true,2 * DrawInt + 1, Character, true);
 
             System.out.println();
-
         }//Koniec petli for
     }//Koniec XmassTreeUp
 
     public static void XmassTreeDown(int Height, char Character) {
-        for(int i=0 ;i < Height ;i++) {
-            drawCharacter(true,1*i,' ', false);
-            drawCharacter(true,2* Height - 2*i - 1, Character, false);
+
+        for(int DrawInt = 0 ;DrawInt < Height ;DrawInt++) {
+            drawCharacter(true,1*DrawInt,' ', false);
+            drawCharacter(true,2* Height - 2*DrawInt - 1, Character, false);
             System.out.println("");
         }//Koniec petli for
     }//Koniec XmassTreeDown
 
     public static void XmassTreeRight(int Height, char Character) {
+
         drawCharacterRUpLDown(true, Height, Character);
         drawCharacter(false, Height, Character, false);
         drawCharacterLUpRDown(true, Height, Character);
@@ -119,11 +115,18 @@ public class XmassTreeMain {
     }//Koniec XmassTreeRight
 
     public static void XmassTreeLeft(int Height, char Character) {
+
         drawCharacterLUpRDown(false, Height, Character);
         drawCharacter(false, Height, Character, false);
         drawCharacterRUpLDown(false, Height, Character);
 
     }//Koniec XmassTreeLeft
+
+    public static int RandomBubbles(int min, int max){
+        int range = (max - min) + 1;
+        return (int)(Math.random() * range) + min;
+
+    }//Koniec klasy RandomBubbles
 
     public static void drawCharacter(boolean ifside ,int Height, char Character,boolean bubbles){
         for (int CharacterInt = 0; CharacterInt < Height; CharacterInt++){
@@ -139,13 +142,6 @@ public class XmassTreeMain {
         if(!ifside)
             System.out.println("");
     }//Koniec funkcji drawCharacter
-
-    public static int RandomBubbles(int min, int max){
-
-        int range = (max - min) + 1;
-        return (int)(Math.random() * range) + min;
-
-    }//Koniec klasy RandomBubbles
 
     public static void drawCharacterLUpRDown(boolean side, int Height, char Character){
 
