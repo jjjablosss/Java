@@ -40,35 +40,42 @@ public class XmassTreeMain {
 
     public static int getHeight(){
         int Wejsciowa = 0;
+        boolean test = false;
         System.out.print("Podaj Wysokosc choinki : ");
-        for(;;) {
+        do {
             Scanner HeightScanner = new Scanner(System.in);
-            if(HeightScanner.hasNextInt())
+            if (HeightScanner.hasNextInt()) {
                 Wejsciowa = HeightScanner.nextInt();
-            //Koniec petli if
-           else if (Wejsciowa > 0)
+            }//Koniec petli if
+            if (Wejsciowa > 0) {
+                test = true;
                 return Wejsciowa;
-            //Koniec petli if wew.
-            else if(Wejsciowa <= 0)
+            }//Koniec petli if wew.
+            else if (Wejsciowa <= 0)
                 System.out.print("Podana wartosc musi byc liczba oraz wieksza od 0: ");
-        }//Koniec Petli For
+        }while(!test);
+        return Wejsciowa;
     }//Koniec klasy getHeight
 
     public static char getCharacter(){
         char Znak =' ', defaultCharacter;
         String StringZnak = " ";
-        System.out.print("Podaj pojedynczy znak (np.*)  : ");
-        Scanner scanCharacter = new Scanner(System.in);
-        if(scanCharacter.hasNext()) {
-            StringZnak = scanCharacter.nextLine();
-            Znak = StringZnak.charAt(0);
-        }//Koniec Petli if
-        if(StringZnak.length() == 1)
-            return Znak;
-        else
-            System.out.println("Podano znak dluzszy niz jeden znak. Uzycie domyslnego znaku.(*) ");
-            return '*';
-
+        boolean test = false;
+        do {
+            System.out.print("Podaj pojedynczy znak (np.*)  : ");
+            Scanner scanCharacter = new Scanner(System.in);
+            if (scanCharacter.hasNext()) {
+                StringZnak = scanCharacter.nextLine();
+                Znak = StringZnak.charAt(0);
+            }//Koniec Petli if
+            if (StringZnak.length() == 1) {
+                test = true;
+                return Znak;
+            }//koniec if wew.
+            else
+                System.out.println("Podano znak dluzszy niz jeden znak.");
+        }while(!test);//Koniec petli Do
+        return Znak;
     }//Koniec klasy getCharacter;
 
 
