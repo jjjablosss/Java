@@ -1,0 +1,96 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+import java.util.Scanner;
+
+public class FirstNumbersWeb {
+
+    public static void main(String[] args) {
+        SprawdzLiczbe();
+    }
+
+    public static void SprawdzLiczbe() {
+        boolean warunek = false;
+        int liczba1 = 0;
+        int liczba2 = 0;
+        int mniejsza = 0;
+        int wieksza = 0;
+        System.out.println("Sprawdz czy podana liczba jest liczbą pierwszą");
+        System.out.println();
+        liczba1 = OdczytajLiczbe();
+
+        liczba2 = OdczytajLiczbe2();
+        mniejsza = liczba1;
+        wieksza = liczba2;
+
+        for(liczba1 = mniejsza; liczba1 < liczba2; liczba1++)
+        {
+        if(IsFirst(liczba1)) {
+            System.out.print(liczba1+",");
+            liczba1++;
+        }
+
+        }
+
+    }
+
+    public static int OdczytajLiczbe2() {
+        boolean warunek = false;
+        System.out.print("Podaj liczbe ktora ma zostac sprawdzona ! : ");
+
+        while(!warunek) {
+            Scanner dlaczegotak = new Scanner(System.in);
+            if(dlaczegotak.hasNextInt()) {
+                int Wejsciowa = dlaczegotak.nextInt();
+                if(Wejsciowa > 1) {
+                    return Wejsciowa;
+                }
+
+                System.out.println("Podana liczba musi byc dodatnia oraz wieksza od 1 : ");
+            } else {
+                System.out.println("Podaj poprawna liczbe do sprawdzenia : ");
+            }
+        }
+
+        return 0;
+    }
+
+
+    public static int OdczytajLiczbe() {
+        boolean warunek = false;
+        System.out.print("Podaj liczbe ktora ma zostac sprawdzona ! : ");
+
+        while(!warunek) {
+            Scanner dlaczegotak = new Scanner(System.in);
+            if(dlaczegotak.hasNextInt()) {
+                int Wejsciowa = dlaczegotak.nextInt();
+                if(Wejsciowa > 1) {
+                    return Wejsciowa;
+                }
+
+                System.out.println("Podana liczba musi byc dodatnia oraz wieksza od 1 : ");
+            } else {
+                System.out.println("Podaj poprawna liczbe do sprawdzenia : ");
+            }
+        }
+
+        return 0;
+    }
+
+    private static boolean IsFirst(int x) {
+        int dodatkowa = 0;
+
+        for(int kolejneliczby = 2; kolejneliczby <= (int)Math.sqrt((double)x); ++kolejneliczby) {
+            if(x % kolejneliczby == 0) {
+                ++dodatkowa;
+                if(dodatkowa >= 1) {
+                    break;
+                }
+            }
+        }
+
+        return dodatkowa == 0;
+    }
+}
