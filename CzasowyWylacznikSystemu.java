@@ -5,12 +5,9 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
 public class Main {
-
     public static void main(String args[]) {
-        int delay = 0;
-        delay = SumaCzasu();
+        int delay = SumaCzasu();
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -25,8 +22,6 @@ public class Main {
                 System.exit(0);
             }
         },delay);
-
-
     }//Koniec klasy głównej MAIN
 
     public static int Odczytaj(String jednostka){
@@ -56,7 +51,6 @@ public class Main {
             else {
                 System.out.print("Podaj poprawna wartosc : ");
             }
-
         }
         return 0;
     }//Koniec funkcji Odczytaj
