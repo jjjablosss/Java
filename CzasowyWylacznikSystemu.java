@@ -10,19 +10,7 @@ public class Main {
 
     public static void main(String args[]) {
         int delay = 0;
-        String jednostka;
-
-        jednostka = "godzinach";
-
-        delay = Odczytaj(jednostka);
-
-        jednostka = "minutach";
-
-        delay = delay + Odczytaj(jednostka);
-
-        jednostka = "sekundach";
-
-        delay = delay + Odczytaj(jednostka);
+        delay = SumaCzasu();
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -72,4 +60,24 @@ public class Main {
         }
         return 0;
     }//Koniec funkcji Odczytaj
+
+    public static int SumaCzasu(){
+        String temp = "";
+        int delay = 0;
+        for(int i=0;i<3;i++) {
+            if(i == 0) {
+                temp = "godzinach";
+                delay = Odczytaj(temp);
+            }
+            else if(i == 1){
+                temp = "minutach";
+                delay = delay + Odczytaj(temp);
+            }
+            else if(i == 2){
+                temp = "sekundach";
+                delay = delay + Odczytaj(temp);
+            }
+        }//Koniec petli for
+        return delay;
+    }
 }//Koniec głównej klasy
