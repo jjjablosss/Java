@@ -14,7 +14,6 @@ public class Main {
             @Override
             public void run() {
                try {
-                    System.out.println("test");
                     Runtime.getRuntime().exec("shutdown -s -t 0");
                 } catch (IOException e) {
                     e.printStackTrace();
